@@ -3,9 +3,12 @@ import SelectMovie from "./SelectMovie";
 import Sessions from "./Sessions";
 import Seats from "./Seats";
 import Sucess from "./Sucess";
+import "./css/reset.css";
+import "./css/style.css";
 
 export default function App(){
     return(
+    <>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<SelectMovie/>} />
@@ -14,5 +17,6 @@ export default function App(){
             <Route path="/sucesso" element={<Sucess/>}/>
         </Routes>
     </BrowserRouter>
+    </>
     );
 }
