@@ -5,18 +5,17 @@ import PageTop from "./PageTop";
 import styled from "styled-components";
 
 export default function SelectMovie(){
-    const [items, setItems] = useState([]);
-    console.log(items)
+    const [movies, setMovies] = useState([]);
     useEffect(()=>{
-        const req = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
-        req.then(res => {setItems(res.data)});
+        const req = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/movies");
+        req.then(res => {setMovies(res.data)});
     },[]);
     return(
         <>
             <PageTop/>
             <SELECT>Selecione o Filme</SELECT>
             <CONTENT>
-                {items.map((item) => {return <POSTER key={item.id} src={item.posterURL}/>})}
+                {movies.map((item) => {return <Link key={item.id} to={`/sessoes/${item.id}}`}><POSTER src={item.posterURL}/></Link>})}
             </CONTENT>
         </>
     );
@@ -25,6 +24,7 @@ export default function SelectMovie(){
 const POSTER = styled.img`
     width: 129px;
     height: 193px;
+    margin-bottom: 27px;
 `;
 const CONTENT = styled.div`
     display: flex;
@@ -33,7 +33,6 @@ const CONTENT = styled.div`
     height: auto;
     width: 100vw;
     column-gap: 46px;
-    row-gap: 27px;
     padding: 0 38px 0 38px;
 `;
 const SELECT = styled.div`
