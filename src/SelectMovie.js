@@ -12,8 +12,7 @@ export default function SelectMovie(){
     },[]);
     return(
         <>
-            <PageTop/>
-            <SELECT>Selecione o Filme</SELECT>
+            <PageTop><p>Selecione o Filme</p></PageTop>
             <CONTENT>
                 {movies.map((item) => {return <Link key={item.id} to={`/sessoes/${item.id}}`}><POSTER src={item.posterURL}/></Link>})}
             </CONTENT>
@@ -34,15 +33,4 @@ const CONTENT = styled.div`
     width: 100vw;
     column-gap: 46px;
     padding: 0 38px 0 38px;
-`;
-const SELECT = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    color: #293845;
-    font-size: 24px;
-    height: 110px;
-    width: 100vw;
-    margin-top: 67px;
 `;
