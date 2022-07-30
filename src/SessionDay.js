@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function SessionDay(props){
     return(
         <>
             <DATE>{props.weekday} - {props.date}</DATE>
-            <TIME>{props.showtimes.map(item => <SQUARE>{item.name}</SQUARE>)}</TIME>
+            <TIME>{props.showtimes.map(item => <Link to={`/assentos/${item.id}`}><SQUARE>{item.name}</SQUARE></Link>)}</TIME>
         </>
     );
 }

@@ -14,7 +14,7 @@ export default function SelectMovie(){
         <>
             <PageTop><p>Selecione o Filme</p></PageTop>
             <CONTENT>
-                {movies.map((item) => {return <Link key={item.id} to={`/sessoes/${item.id}}`}><POSTER src={item.posterURL}/></Link>})}
+                {movies.map((item) => {return <Link key={item.id} to={`/sessoes/${item.id}`}><POSTER src={item.posterURL}/></Link>})}
             </CONTENT>
         </>
     );

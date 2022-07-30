@@ -5,8 +5,7 @@ import PageTop from "./PageTop";
 import SessionDay from "./SessionDay";
 
 export default function Sessions(){
-    const getid = useParams().idFilme;
-    const id = getid.slice(0,getid.length - 1);
+    const id = useParams().idFilme;
     const [sessions, setSessions] = useState({});
     const [days, setDays] = useState([]);
     useEffect(()=>{
