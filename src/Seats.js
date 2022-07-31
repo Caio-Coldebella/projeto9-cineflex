@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PageTop from "./PageTop";
+import SeatCircle from "./SeatCircle";
+import styled from "styled-components";
 
 export default function Seats(){
     const params = useParams();
@@ -16,6 +18,17 @@ export default function Seats(){
     return(
         <>
         <PageTop><p>Selecione o(s) assento(s)</p></PageTop>
+        <SEATSBOARD>{seats.map( seat => {return <SeatCircle name={seat.name} isAvailable={seat.isAvailable}></SeatCircle>})}</SEATSBOARD>
         </>
     );
 }
+
+const SEATSBOARD = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    row-gap: 18px;
+    column-gap: 9px;
+    margin: 0 24px 0 24px;
+`;

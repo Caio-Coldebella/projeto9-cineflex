@@ -5,7 +5,7 @@ export default function SessionDay(props){
     return(
         <>
             <DATE>{props.weekday} - {props.date}</DATE>
-            <TIME>{props.showtimes.map(item => <Link to={`/assentos/${item.id}`}><SQUARE>{item.name}</SQUARE></Link>)}</TIME>
+            <TIME>{props.showtimes.map(item => <Link style={{textDecoration:"none"}} to={`/assentos/${item.id}`}><SQUARE>{item.name}</SQUARE></Link>)}</TIME>
         </>
     );
 }
