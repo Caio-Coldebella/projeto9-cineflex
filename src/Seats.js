@@ -10,15 +10,26 @@ export default function Seats(){
     console.log(params)
     const [data, setData] = useState({});
     const [seats, setSeats] = useState([]);
+    const [selectedseats, setSelectedseats] = useState([]);
+    const [personName, setPersonName] = useState("");
+    const [cpf, setCpf] = useState("");
     useEffect(()=>{
         const req = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.idSessao}/seats`);
         req.then(res => {setData(res.data); setSeats(res.data.seats)});
     },[]);
-    console.log(seats)
+    function sendData(){
+        console.log("enviou")
+        return null;
+    }
     return(
         <>
         <PageTop><p>Selecione o(s) assento(s)</p></PageTop>
-        <SEATSBOARD>{seats.map( seat => {return <SeatCircle name={seat.name} isAvailable={seat.isAvailable}></SeatCircle>})}</SEATSBOARD>
+        <SEATSBOARD>{seats.map( seat => {return <SeatCircle set={setSelectedseats} seats={selectedseats} name={seat.name} isAvailable={seat.isAvailable}></SeatCircle>})}</SEATSBOARD>
+        <form onSubmit={sendData}>
+            <input type="text" value={personName} required onChange={e => setPersonName(e.target.value)} placeholder="Digite seu nome..."/>
+            <input type="text" value={cpf} required onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..."/>
+            <button type="submit">Reservar assento(s)</button>
+        </form>
         </>
     );
 }
