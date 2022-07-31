@@ -24,6 +24,7 @@ export default function Seats(){
     return(
         <>
         <PageTop><p>Selecione o(s) assento(s)</p></PageTop>
+        <PAGE>
         <SEATSBOARD>{seats.map( seat => {return <SeatCircle set={setSelectedseats} seats={selectedseats} name={seat.name} isAvailable={seat.isAvailable}/>})}</SEATSBOARD>
         <SEATSEXAMPLE>
             <EXAMPLE>
@@ -46,9 +47,17 @@ export default function Seats(){
             <INPUTFORM type="text" value={cpf} required onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..."/>
             <BUTTONFORM type="submit">Reservar assento(s)</BUTTONFORM>
         </FORM>
+        </PAGE>
         </>
     );
 }
+const PAGE = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+    padding: 0 24px 0 24px;
+`;
 
 const SEATSBOARD = styled.div`
     display: flex;
@@ -56,8 +65,7 @@ const SEATSBOARD = styled.div`
     width: 100%;
     height: auto;
     row-gap: 18px;
-    column-gap: 10px;
-    margin: 0 24px 0 24px;
+    column-gap: 9px;
 `;
 const SEATSEXAMPLE = styled.div`
     display: flex;
@@ -89,7 +97,6 @@ const FORM = styled.form`
     font-size: 18px;
     height: auto;
     width: 100%;
-    margin: 0 24px 0 24px;
 `;
 const INPUTFORM = styled.input`
     height: 50px;
