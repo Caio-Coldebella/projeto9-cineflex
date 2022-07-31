@@ -61,7 +61,7 @@ const SEATSBOARD = styled.div`
 `;
 const SEATSEXAMPLE = styled.div`
     display: flex;
-    width: auto;
+    width: 100%;
     height: auto;
     justify-content: center;
     margin: 15px 0 50px 0;
@@ -72,7 +72,7 @@ const EXAMPLE = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: auto;
+    width: 100%;
     height: 50px;
     color: #4E5A65;
     font-size: 13px;
