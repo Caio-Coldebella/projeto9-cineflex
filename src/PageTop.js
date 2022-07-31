@@ -19,7 +19,7 @@ const BAR = styled.div`
     top: 0;
     left: 0;
     height: 67px;
-    width: 100vw;
+    width: 100%;
     background-color: #C3CFD9;
 `;
 const TITLE = styled.p`
