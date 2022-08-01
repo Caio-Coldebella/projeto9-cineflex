@@ -20,7 +20,7 @@ export default function Seats(){
         const req = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.idSessao}/seats`);
         req.then(res => {setData(res.data); setSeats(res.data.seats)});
     },[]);
-    console.log(data)
+    console.log(seats)
     function sendData(event){
         event.preventDefault();
         const name = `Nome: ${personName}`;
@@ -29,16 +29,24 @@ export default function Seats(){
         const title = `${data.movie.title}`;
         let tickets = [];
         for(let i=0; i<selectedseats.length; i++){
-            tickets.push(`Assento ${selectedseats[i]}`);
+            tickets.push(`Assento ${selectedseats[i].name}`);
         }
+        const seatobj = selectedseats.map(item => {return Number(item.id)})
+        console.log(seatobj)
+        const obj = {
+            ids: seatobj,
+            name: personName,
+            cpf: cpf
+        };
         set(name,CPF,session,title,tickets);
-        navigate('/sucesso');
+        const end = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many",obj);
+        end.then(() => navigate('/sucesso'));
     }
     return(
         <>
         <PageTop><p>Selecione o(s) assento(s)</p></PageTop>
         <PAGE>
-        <SEATSBOARD>{seats.map( seat => {return <SeatCircle set={setSelectedseats} seats={selectedseats} name={seat.name} isAvailable={seat.isAvailable}/>})}</SEATSBOARD>
+        <SEATSBOARD>{seats.map( seat => {return <SeatCircle set={setSelectedseats} seats={selectedseats} name={seat.name} seatid={seat.id} isAvailable={seat.isAvailable}/>})}</SEATSBOARD>
         <SEATSEXAMPLE>
             <EXAMPLE>
                 <CIRCLE color={"#8DD7CF"}></CIRCLE>
