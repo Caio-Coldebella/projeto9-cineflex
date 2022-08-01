@@ -61,6 +61,7 @@ export default function Seats(){
             <BUTTONFORM type="submit">Reservar assento(s)</BUTTONFORM>
         </FORM>
         </PAGE>
+        <PageBottom image={data.movie? data.movie.posterURL:null}><p>{data.movie? data.movie.title:null}</p><p>{data.day? data.day.weekday:null} - {data.name}</p></PageBottom>
         </>
     );
 }
@@ -70,6 +71,7 @@ const PAGE = styled.div`
     width: 100vw;
     height: 100%;
     padding: 0 24px 0 24px;
+    margin-bottom: 147px;
 `;
 
 const SEATSBOARD = styled.div`

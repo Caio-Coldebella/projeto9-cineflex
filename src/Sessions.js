@@ -4,6 +4,7 @@ import axios from "axios";
 import PageTop from "./PageTop";
 import SessionDay from "./SessionDay";
 import PageBottom from "./PageBottom";
+import styled from "styled-components";
 export default function Sessions(){
     const id = useParams().idFilme;
     const [sessions, setSessions] = useState({});
@@ -16,8 +17,12 @@ export default function Sessions(){
     return(
         <>
         <PageTop><p>Selecione o Horário</p></PageTop>
-        {days.map(day => {return <SessionDay weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>})}
+        <PAGE>{days.map(day => {return <SessionDay weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>})}</PAGE>
         <PageBottom image={sessions.posterURL}><p>{sessions.title}</p></PageBottom>
         </>
     );
 }
+
+const PAGE = styled.div`
+    margin-bottom: 147px;
+`;
