@@ -5,7 +5,7 @@ function listofselected(seats,set,Name,Id,sel){
     for(let i=0; i<=seats.length; i++){
         if(i === seats.length && sel){
             set([...seats, {name:Name, id:Id}]);
-        }else if(seats[i] != undefined && seats[i].name === Name && !sel){
+        }else if(seats[i] !== undefined && seats[i].name === Name && !sel){
             if(seats.length > 1){
                 seats.splice(i,1);
                 set(seats);
@@ -13,7 +13,7 @@ function listofselected(seats,set,Name,Id,sel){
                 set([]);
             }
             break;
-        }else if(seats[i]!=undefined && seats[i].name===Name){
+        }else if(seats[i]!==undefined && seats[i].name===Name){
             break;
         }
     }

@@ -1,17 +1,18 @@
 import PageTop from "./PageTop";
 import styled from "styled-components";
 import Orderdata from "./Orderdata";
+import {useNavigate} from "react-router-dom";
 export default function Sucess(){
     const order = (Orderdata())[0];
-    console.log(order)
+    const navigate = useNavigate();
     return(
         <>
             <PageTop><TITLE>Pedido feito<br/>com sucesso!</TITLE></PageTop>
             <PAGE>
                 <CHILD><p>Filme e sessão</p><p>{order.title}</p><p>{order.session}</p></CHILD>
-                <CHILD><p>Ingressos</p>{order.tickets.map(a => <p>{a}</p>)}</CHILD>
+                <CHILD><p>Ingressos</p>{order.tickets.map((a,index) => <p key={index}>{a}</p>)}</CHILD>
                 <CHILD><p>Comprador</p><p>{order.name}</p><p>{order.cpf}</p></CHILD>
-                <BUTTONFORM>Voltar para Home</BUTTONFORM>
+                <BUTTONFORM onClick={()=>{navigate('/')}}>Voltar para Home</BUTTONFORM>
             </PAGE>
         </>
     );

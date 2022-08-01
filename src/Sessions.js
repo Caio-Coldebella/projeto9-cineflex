@@ -12,12 +12,11 @@ export default function Sessions(){
     useEffect(()=>{
         const req = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${id}/showtimes`);
         req.then(res => {setSessions(res.data);setDays(res.data.days)});
-    },{});
-    console.log(sessions)
+    },[]);
     return(
         <>
         <PageTop><p>Selecione o Horário</p></PageTop>
-        <PAGE>{days.map(day => {return <SessionDay weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>})}</PAGE>
+        <PAGE>{days.map((day,index) => {return <SessionDay key={index} weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>})}</PAGE>
         <PageBottom image={sessions.posterURL}><p>{sessions.title}</p></PageBottom>
         </>
     );
