@@ -12,7 +12,7 @@ export default function SelectMovie(){
     },[]);
     return(
         <>
-            <PageTop><p>Selecione o Filme</p></PageTop>
+            <PageTop redirect={'/'} visible={false}><p>Selecione o Filme</p></PageTop>
             <CONTENT>
                 {movies.map((item) => {return <Link key={item.id} to={`/sessoes/${item.id}`}><POSTER src={item.posterURL}/></Link>})}
             </CONTENT>

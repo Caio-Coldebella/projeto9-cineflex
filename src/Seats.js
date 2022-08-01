@@ -42,7 +42,7 @@ export default function Seats(){
     }
     return(
         <>
-        <PageTop><p>Selecione o(s) assento(s)</p></PageTop>
+        <PageTop redirect={`/sessoes/${data.movie? data.movie.id: ""}`} visible={true}><p>Selecione o(s) assento(s)</p></PageTop>
         <PAGE>
         <SEATSBOARD>{seats.map( (seat,index) => {return <SeatCircle key={index} set={setSelectedseats} seats={selectedseats} name={seat.name} seatid={seat.id} isAvailable={seat.isAvailable}/>})}</SEATSBOARD>
         <SEATSEXAMPLE>

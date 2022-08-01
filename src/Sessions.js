@@ -15,7 +15,7 @@ export default function Sessions(){
     },[]);
     return(
         <>
-        <PageTop><p>Selecione o Horário</p></PageTop>
+        <PageTop redirect={"/"} visible={true}><p>Selecione o Horário</p></PageTop>
         <PAGE>{days.map((day,index) => {return <SessionDay key={index} weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>})}</PAGE>
         <PageBottom image={sessions.posterURL}><p>{sessions.title}</p></PageBottom>
         </>

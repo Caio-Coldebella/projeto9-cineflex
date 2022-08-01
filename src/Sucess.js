@@ -7,7 +7,7 @@ export default function Sucess(){
     const navigate = useNavigate();
     return(
         <>
-            <PageTop><TITLE>Pedido feito<br/>com sucesso!</TITLE></PageTop>
+            <PageTop redirect={'/'} visible={false}><TITLE>Pedido feito<br/>com sucesso!</TITLE></PageTop>
             <PAGE>
                 <CHILD><p>Filme e sessão</p><p>{order.title}</p><p>{order.session}</p></CHILD>
                 <CHILD><p>Ingressos</p>{order.tickets.map((a,index) => <p key={index}>{a}</p>)}</CHILD>

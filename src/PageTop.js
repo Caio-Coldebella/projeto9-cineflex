@@ -1,9 +1,16 @@
 import styled from "styled-components";
-
+import arrow from "./assets/arrow.png";
+import { useNavigate } from "react-router-dom";
 export default function PageTop(props){
+    const navigate = useNavigate();
+    let back = null;
+    if(props.visible){
+        back = <BACK src={arrow} onClick={()=>{navigate(props.redirect)}}></BACK>;
+    }
     return(
         <>
         <BAR>
+            {back}
             <TITLE>CINEFLEX</TITLE>
         </BAR>
         <SELECT>{props.children}</SELECT>
@@ -35,4 +42,12 @@ const SELECT = styled.div`
     height: 110px;
     width: 100vw;
     margin-top: 67px;
+`;
+const BACK = styled.img`
+    position: fixed;
+    top: 15px;
+    left: 10%;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
 `;
