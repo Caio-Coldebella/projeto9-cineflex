@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 function listofselected(seats,set,name,sel){
@@ -20,7 +20,7 @@ function listofselected(seats,set,name,sel){
 
 export default function SeatCircle(props){
     const [sel, setSel] = useState(false);
-    listofselected(props.seats,props.set,props.name,sel);
+    useEffect(()=>{listofselected(props.seats,props.set,props.name,sel)},[sel]);
     return(
         <CIRCLE available={props.isAvailable} selected={sel} onClick={() => {props.isAvailable ? setSel(!sel): alert("Esse assento não está disponível")}}>{props.name}</CIRCLE>
     );

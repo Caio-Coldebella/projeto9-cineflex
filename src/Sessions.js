@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import PageTop from "./PageTop";
 import SessionDay from "./SessionDay";
-
+import PageBottom from "./PageBottom";
 export default function Sessions(){
     const id = useParams().idFilme;
     const [sessions, setSessions] = useState({});
@@ -17,6 +17,7 @@ export default function Sessions(){
         <>
         <PageTop><p>Selecione o Horário</p></PageTop>
         {days.map(day => {return <SessionDay weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>})}
+        <PageBottom image={sessions.posterURL}><p>{sessions.title}</p></PageBottom>
         </>
     );
 }

@@ -5,6 +5,7 @@ import PageTop from "./PageTop";
 import SeatCircle from "./SeatCircle";
 import styled from "styled-components";
 import Orderdata from "./Orderdata";
+import PageBottom from "./PageBottom";
 
 export default function Seats(){
     const params = useParams();
