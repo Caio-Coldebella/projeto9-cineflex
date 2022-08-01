@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import SelectMovie from "./SelectMovie";
 import Sessions from "./Sessions";
 import Seats from "./Seats";

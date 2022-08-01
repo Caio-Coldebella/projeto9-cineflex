@@ -1,25 +1,37 @@
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PageTop from "./PageTop";
 import SeatCircle from "./SeatCircle";
 import styled from "styled-components";
+import Orderdata from "./Orderdata";
 
 export default function Seats(){
     const params = useParams();
-    console.log(params)
+    const navigate = useNavigate();
     const [data, setData] = useState({});
     const [seats, setSeats] = useState([]);
     const [selectedseats, setSelectedseats] = useState([]);
     const [personName, setPersonName] = useState("");
     const [cpf, setCpf] = useState("");
+    const set = (Orderdata())[1];
     useEffect(()=>{
         const req = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.idSessao}/seats`);
         req.then(res => {setData(res.data); setSeats(res.data.seats)});
     },[]);
-    function sendData(){
-        console.log("enviou")
-        return null;
+    console.log(data)
+    function sendData(event){
+        event.preventDefault();
+        const name = `Nome: ${personName}`;
+        const CPF = `CPF: ${cpf}`;
+        const session = `${data.day.date} ${data.name}`;
+        const title = `${data.movie.title}`;
+        let tickets = [];
+        for(let i=0; i<selectedseats.length; i++){
+            tickets.push(`Assento ${selectedseats[i]}`);
+        }
+        set(name,CPF,session,title,tickets);
+        navigate('/sucesso');
     }
     return(
         <>
